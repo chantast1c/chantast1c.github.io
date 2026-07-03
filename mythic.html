@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mythic Counter</title>
+    <style>
+      /* Optional basic styling to center and clean up the UI */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f9;
+      }
+      .counter-container {
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      #counter-value {
+        font-size: 3rem;
+        margin: 10px 0;
+        font-weight: bold;
+        color: #333;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button.reset {
+        background-color: #6c757d;
+      }
+      button.reset:hover {
+        background-color: #5a6268;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter-container">
+      <h2>MYthic Counter</h2>
+      <!-- The live number is displayed here -->
+      <div id="counter-value">0</div>
+
+      <!-- Interactive buttons -->
+      <button id="decrement-btn">- Decrease</button>
+      <button id="reset-btn" class="reset">Reset</button>
+      <button id="increment-btn">+1</button>
+      <button id="increment-five">+5</button>
+      <button id="increment-twentyfive">+25</button>
+    </div>
+
+    <script>
+      // 1. Initialize the live count variable
+      let count = 0;
+
+      // 2. Select the HTML elements
+      const counterValue = document.getElementById("counter-value");
+      const incrementBtn = document.getElementById("increment-btn");
+      const incrementFive = document.getElementById("increment-five");
+      const incrementTwentyfive = document.getElementById(
+        "increment-twentyfive",
+      );
+      const decrementBtn = document.getElementById("decrement-btn");
+      const resetBtn = document.getElementById("reset-btn");
+
+      // 3. Add event listeners to the buttons to handle clicks
+      incrementBtn.addEventListener("click", () => {
+        count++; // Add 1
+        counterValue.textContent = count; // Update the HTML text live
+      });
+
+      incrementFive.addEventListener("click", () => {
+        count++; // Add 1
+        counterValue.textContent = count; // Update the HTML text live
+      });
+
+      incrementTwentyfive.addEventListener("click", () => {
+        count += 25; // Add 1
+        counterValue.textContent = count; // Update the HTML text live
+      });
+
+      decrementBtn.addEventListener("click", () => {
+        count--; // Subtract 1
+        counterValue.textContent = count;
+      });
+
+      resetBtn.addEventListener("click", () => {
+        count = 0; // Reset back to zero
+        counterValue.textContent = count;
+      });
+    </script>
+  </body>
+</html>
