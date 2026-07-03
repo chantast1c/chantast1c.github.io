@@ -54,7 +54,7 @@
     <div class="counter-container">
       <h2>MYthic Counter</h2>
       <!-- The live number is displayed here -->
-      <div id="counter-value">0</div>
+      <div id="counter-value"></div>
 
       <!-- Interactive buttons -->
       <button id="decrement-btn">- Decrease</button>
@@ -65,17 +65,28 @@
     </div>
 
     <script>
-      // Load saved value, or start at 0
-      let count = parseInt(localStorage.getItem("count")) || 0;
+      // Load saved count (or start at 0)
+      let count = parseInt(localStorage.getItem("count"));
+
+      if (isNaN(count)) {
+        count = 0;
+      }
 
       const counterValue = document.getElementById("counter-value");
+      const incrementBtn = document.getElementById("increment-btn");
+      const incrementFive = document.getElementById("increment-five");
+      const incrementTwentyfive = document.getElementById(
+        "increment-twentyfive",
+      );
+      const decrementBtn = document.getElementById("decrement-btn");
+      const resetBtn = document.getElementById("reset-btn");
 
       function updateCounter() {
-        counterValue.innerHTML = count; // or textContent
+        counterValue.textContent = count;
         localStorage.setItem("count", count);
       }
 
-      // Display initial value
+      // Display saved value immediately
       updateCounter();
 
       incrementBtn.addEventListener("click", () => {
