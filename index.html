@@ -65,43 +65,42 @@
     </div>
 
     <script>
-      // 1. Initialize the live count variable
-      let count = 0;
+      // Load saved value, or start at 0
+      let count = parseInt(localStorage.getItem("count")) || 0;
 
-      // 2. Select the HTML elements
       const counterValue = document.getElementById("counter-value");
-      const incrementBtn = document.getElementById("increment-btn");
-      const incrementFive = document.getElementById("increment-five");
-      const incrementTwentyfive = document.getElementById(
-        "increment-twentyfive",
-      );
-      const decrementBtn = document.getElementById("decrement-btn");
-      const resetBtn = document.getElementById("reset-btn");
 
-      // 3. Add event listeners to the buttons to handle clicks
+      function updateCounter() {
+        counterValue.innerHTML = count; // or textContent
+        localStorage.setItem("count", count);
+      }
+
+      // Display initial value
+      updateCounter();
+
       incrementBtn.addEventListener("click", () => {
-        count++; // Add 1
-        counterValue.textContent = count; // Update the HTML text live
+        count++;
+        updateCounter();
       });
 
       incrementFive.addEventListener("click", () => {
-        count += 5; // Add 5
-        counterValue.textContent = count; // Update the HTML text live
+        count += 5;
+        updateCounter();
       });
 
       incrementTwentyfive.addEventListener("click", () => {
-        count += 25; // Add 1
-        counterValue.textContent = count; // Update the HTML text live
+        count += 25;
+        updateCounter();
       });
 
       decrementBtn.addEventListener("click", () => {
-        count--; // Subtract 1
-        counterValue.textContent = count;
+        count--;
+        updateCounter();
       });
 
       resetBtn.addEventListener("click", () => {
-        count = 0; // Reset back to zero
-        counterValue.textContent = count;
+        count = 0;
+        updateCounter();
       });
     </script>
   </body>
